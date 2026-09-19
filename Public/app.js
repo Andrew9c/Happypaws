@@ -2,15 +2,37 @@
 
   function fmt(n){ return '$' + n.toLocaleString('en-US'); }
 
+  // Two genuinely different drawings per category (not just recolors),
+  // combined with 6 color pairings below = 12 distinct-looking cards per
+  // category. No stock photos, nothing to license.
   const ART = {
-    'Dogs': `<svg viewBox="0 0 100 100" role="img" aria-label="Dog"><circle cx="50" cy="58" r="28" fill="var(--p1)"/><ellipse cx="26" cy="34" rx="9" ry="15" fill="var(--p1)" transform="rotate(-25 26 34)"/><ellipse cx="74" cy="34" rx="9" ry="15" fill="var(--p1)" transform="rotate(25 74 34)"/><ellipse cx="50" cy="68" rx="15" ry="11" fill="var(--p2)"/><circle cx="42" cy="52" r="4" fill="var(--navy)"/><circle cx="58" cy="52" r="4" fill="var(--navy)"/><ellipse cx="50" cy="70" rx="4.5" ry="3.2" fill="var(--navy)"/><path d="M43 76 Q50 80 57 76" stroke="var(--navy)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
-    'Cats': `<svg viewBox="0 0 100 100" role="img" aria-label="Cat"><path d="M28 22 L38 46 L20 44 Z" fill="var(--p1)"/><path d="M72 22 L80 44 L62 46 Z" fill="var(--p1)"/><circle cx="50" cy="58" r="27" fill="var(--p1)"/><ellipse cx="50" cy="67" rx="13" ry="9" fill="var(--p2)"/><circle cx="42" cy="54" r="3.6" fill="var(--navy)"/><circle cx="58" cy="54" r="3.6" fill="var(--navy)"/><path d="M50 66 l-4 -4 h8 z" fill="var(--navy)"/><path d="M18 62 L34 60 M18 68 L34 66 M82 62 L66 60 M82 68 L66 66" stroke="var(--navy)" stroke-width="1.6" stroke-linecap="round"/></svg>`,
-    'Birds': `<svg viewBox="0 0 100 100" role="img" aria-label="Bird"><ellipse cx="46" cy="58" rx="26" ry="22" fill="var(--p1)"/><circle cx="70" cy="38" r="14" fill="var(--p1)"/><path d="M83 38 L94 34 L83 45 Z" fill="var(--p2)"/><circle cx="74" cy="34" r="2.6" fill="var(--navy)"/><path d="M24 56 Q10 58 20 76 Q34 74 34 60 Z" fill="var(--p2)"/><path d="M30 78 L26 90 M46 82 L44 92" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"/></svg>`,
-    'Fish & aquatics': `<svg viewBox="0 0 100 100" role="img" aria-label="Fish"><ellipse cx="42" cy="52" rx="28" ry="18" fill="var(--p1)"/><path d="M70 52 L92 36 L92 68 Z" fill="var(--p2)"/><path d="M34 36 Q42 24 54 34 Q46 40 40 40 Z" fill="var(--p2)"/><circle cx="26" cy="48" r="3.6" fill="var(--cream)"/><path d="M18 52 Q10 52 18 60" stroke="var(--navy)" stroke-width="1.6" fill="none"/></svg>`,
-    'Small pets': `<svg viewBox="0 0 100 100" role="img" aria-label="Small pet"><circle cx="50" cy="58" r="27" fill="var(--p1)"/><circle cx="30" cy="34" r="9" fill="var(--p1)"/><circle cx="70" cy="34" r="9" fill="var(--p1)"/><circle cx="30" cy="66" r="8" fill="var(--p2)" opacity="0.5"/><circle cx="70" cy="66" r="8" fill="var(--p2)" opacity="0.5"/><circle cx="42" cy="54" r="3.4" fill="var(--navy)"/><circle cx="58" cy="54" r="3.4" fill="var(--navy)"/><ellipse cx="50" cy="64" rx="3.4" ry="2.6" fill="var(--navy)"/></svg>`,
-    'Reptiles': `<svg viewBox="0 0 100 100" role="img" aria-label="Reptile"><path d="M20 66 Q30 40 55 46 Q80 50 84 30" stroke="var(--p1)" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="86" cy="27" r="11" fill="var(--p1)"/><circle cx="90" cy="23" r="2.4" fill="var(--navy)"/><circle cx="30" cy="60" r="9" fill="var(--p2)"/><circle cx="46" cy="46" r="9" fill="var(--p2)"/><circle cx="64" cy="45" r="9" fill="var(--p2)"/></svg>`
+    'Dogs': [
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Dog"><circle cx="50" cy="58" r="28" fill="var(--p1)"/><ellipse cx="26" cy="34" rx="9" ry="15" fill="var(--p1)" transform="rotate(-25 26 34)"/><ellipse cx="74" cy="34" rx="9" ry="15" fill="var(--p1)" transform="rotate(25 74 34)"/><ellipse cx="50" cy="68" rx="15" ry="11" fill="var(--p2)"/><circle cx="42" cy="52" r="4" fill="var(--navy)"/><circle cx="58" cy="52" r="4" fill="var(--navy)"/><ellipse cx="50" cy="70" rx="4.5" ry="3.2" fill="var(--navy)"/><path d="M43 76 Q50 80 57 76" stroke="var(--navy)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Dog"><ellipse cx="50" cy="60" rx="26" ry="24" fill="var(--p1)"/><ellipse cx="22" cy="52" rx="10" ry="20" fill="var(--p1)" transform="rotate(-8 22 52)"/><ellipse cx="78" cy="52" rx="10" ry="20" fill="var(--p1)" transform="rotate(8 78 52)"/><ellipse cx="50" cy="72" rx="18" ry="13" fill="var(--p2)"/><circle cx="40" cy="54" r="3.6" fill="var(--navy)"/><circle cx="60" cy="54" r="3.6" fill="var(--navy)"/><ellipse cx="50" cy="76" rx="5" ry="3.6" fill="var(--navy)"/></svg>`
+    ],
+    'Cats': [
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Cat"><path d="M28 22 L38 46 L20 44 Z" fill="var(--p1)"/><path d="M72 22 L80 44 L62 46 Z" fill="var(--p1)"/><circle cx="50" cy="58" r="27" fill="var(--p1)"/><ellipse cx="50" cy="67" rx="13" ry="9" fill="var(--p2)"/><circle cx="42" cy="54" r="3.6" fill="var(--navy)"/><circle cx="58" cy="54" r="3.6" fill="var(--navy)"/><path d="M50 66 l-4 -4 h8 z" fill="var(--navy)"/><path d="M18 62 L34 60 M18 68 L34 66 M82 62 L66 60 M82 68 L66 66" stroke="var(--navy)" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Cat"><circle cx="50" cy="60" r="28" fill="var(--p1)"/><ellipse cx="30" cy="34" rx="7" ry="6" fill="var(--p1)"/><ellipse cx="70" cy="34" rx="7" ry="6" fill="var(--p1)"/><ellipse cx="50" cy="70" rx="14" ry="10" fill="var(--p2)"/><circle cx="41" cy="56" r="4" fill="var(--navy)"/><circle cx="59" cy="56" r="4" fill="var(--navy)"/><path d="M50 68 l-4 -3 h8 z" fill="var(--navy)"/></svg>`
+    ],
+    'Birds': [
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Bird"><ellipse cx="46" cy="58" rx="26" ry="22" fill="var(--p1)"/><circle cx="70" cy="38" r="14" fill="var(--p1)"/><path d="M83 38 L94 34 L83 45 Z" fill="var(--p2)"/><circle cx="74" cy="34" r="2.6" fill="var(--navy)"/><path d="M24 56 Q10 58 20 76 Q34 74 34 60 Z" fill="var(--p2)"/><path d="M30 78 L26 90 M46 82 L44 92" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"/></svg>`,
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Bird"><circle cx="50" cy="46" r="16" fill="var(--p1)"/><path d="M64 44 L76 40 L64 50 Z" fill="var(--p2)"/><circle cx="55" cy="42" r="2.4" fill="var(--navy)"/><path d="M50 58 Q20 64 24 40 Q34 62 50 58 Z" fill="var(--p2)"/><path d="M50 58 Q80 64 76 40 Q66 62 50 58 Z" fill="var(--p2)"/><path d="M46 60 L42 76 M54 60 L58 76" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"/></svg>`
+    ],
+    'Fish & aquatics': [
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Fish"><ellipse cx="42" cy="52" rx="28" ry="18" fill="var(--p1)"/><path d="M70 52 L92 36 L92 68 Z" fill="var(--p2)"/><path d="M34 36 Q42 24 54 34 Q46 40 40 40 Z" fill="var(--p2)"/><circle cx="26" cy="48" r="3.6" fill="var(--cream)"/><path d="M18 52 Q10 52 18 60" stroke="var(--navy)" stroke-width="1.6" fill="none"/></svg>`,
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Fish"><circle cx="46" cy="52" r="24" fill="var(--p1)"/><path d="M68 40 L90 28 L82 52 L90 76 L68 64 Z" fill="var(--p2)"/><path d="M40 30 Q46 18 54 30 Z" fill="var(--p2)"/><circle cx="30" cy="48" r="3.6" fill="var(--cream)"/></svg>`
+    ],
+    'Small pets': [
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Small pet"><circle cx="50" cy="58" r="27" fill="var(--p1)"/><circle cx="30" cy="34" r="9" fill="var(--p1)"/><circle cx="70" cy="34" r="9" fill="var(--p1)"/><circle cx="30" cy="66" r="8" fill="var(--p2)" opacity="0.5"/><circle cx="70" cy="66" r="8" fill="var(--p2)" opacity="0.5"/><circle cx="42" cy="54" r="3.4" fill="var(--navy)"/><circle cx="58" cy="54" r="3.4" fill="var(--navy)"/><ellipse cx="50" cy="64" rx="3.4" ry="2.6" fill="var(--navy)"/></svg>`,
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Small pet"><ellipse cx="50" cy="64" rx="24" ry="20" fill="var(--p1)"/><ellipse cx="38" cy="28" rx="7" ry="20" fill="var(--p1)" transform="rotate(-10 38 28)"/><ellipse cx="62" cy="28" rx="7" ry="20" fill="var(--p1)" transform="rotate(10 62 28)"/><ellipse cx="38" cy="30" rx="3.4" ry="12" fill="var(--p2)" transform="rotate(-10 38 30)"/><ellipse cx="62" cy="30" rx="3.4" ry="12" fill="var(--p2)" transform="rotate(10 62 30)"/><circle cx="42" cy="60" r="3.4" fill="var(--navy)"/><circle cx="58" cy="60" r="3.4" fill="var(--navy)"/><ellipse cx="50" cy="70" rx="3" ry="2.4" fill="var(--navy)"/></svg>`
+    ],
+    'Reptiles': [
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Reptile"><path d="M20 66 Q30 40 55 46 Q80 50 84 30" stroke="var(--p1)" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="86" cy="27" r="11" fill="var(--p1)"/><circle cx="90" cy="23" r="2.4" fill="var(--navy)"/><circle cx="30" cy="60" r="9" fill="var(--p2)"/><circle cx="46" cy="46" r="9" fill="var(--p2)"/><circle cx="64" cy="45" r="9" fill="var(--p2)"/></svg>`,
+      `<svg viewBox="0 0 100 100" role="img" aria-label="Reptile"><ellipse cx="48" cy="56" rx="26" ry="16" fill="var(--p1)"/><path d="M72 56 Q90 50 92 66" stroke="var(--p1)" stroke-width="10" fill="none" stroke-linecap="round"/><ellipse cx="26" cy="52" rx="10" ry="8" fill="var(--p1)"/><circle cx="20" cy="50" r="2.2" fill="var(--navy)"/><ellipse cx="30" cy="70" rx="5" ry="8" fill="var(--p1)"/><ellipse cx="66" cy="70" rx="5" ry="8" fill="var(--p1)"/><circle cx="40" cy="52" r="5" fill="var(--p2)"/><circle cx="56" cy="58" r="5" fill="var(--p2)"/></svg>`
+    ]
   };
 
+  // Six color pairings, cycled by each pet's saved variant number.
   const PALETTE = [
     ['var(--barn)', 'var(--cream-2)'],
     ['var(--pine)', 'var(--cream-2)'],
@@ -20,8 +42,9 @@
     ['var(--teal)', 'var(--cream-2)']
   ];
 
-  function artFor(category){
-    return ART[category] || '';
+  function artFor(category, variant){
+    const shapes = ART[category] || [''];
+    return shapes[variant % shapes.length];
   }
 
   function paletteFor(variant){
@@ -31,7 +54,7 @@
   let catalog = { pets: [], food: [] };
   let categories = [];
   const allItemsById = {};
-  const cart = {};
+  const cart = {}; // id -> qty
 
   const catNav = document.getElementById('catNav');
   const petSections = document.getElementById('petSections');
@@ -107,7 +130,7 @@
         card.className = 'card';
         card.innerHTML = `
           <div class="card-art" style="--p1:${c1}; --p2:${c2};">
-            ${artFor(cat)}
+            ${artFor(cat, p.variant || 0)}
             <span class="price-tag">${fmt(p.price)}</span>
           </div>
           <div class="card-body">
@@ -224,7 +247,7 @@
       const data = await res.json();
 
       if(data.url){
-        window.location.href = data.url;
+        window.location.href = data.url; // real Stripe-hosted checkout page
       } else {
         showToast(data.error || 'Could not start checkout');
         checkoutBtn.disabled = false;
