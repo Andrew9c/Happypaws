@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Paws — U.S. Pets & Provisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="topbar">Shipping to all 50 states — no international or overseas orders</div>
+  <div class="wrap nav-row">
+    <div class="brand">
+      <span class="mark">🐾</span>
+      <div>
+        <h1>Happy Paws</h1>
+        <small>American-raised pets &amp; provisions</small>
+      </div>
+    </div>
+    <nav class="cats" id="catNav"></nav>
+    <button class="cart-btn" id="cartOpenBtn">
+      Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h2 class="slab">Every animal here was born, hatched, or bred somewhere in the U.S.</h2>
+      <p class="lede">We work with small breeders and hobby farms from the Carolinas to the Cascades. Prices reflect current U.S. market averages, animals ship within the continental U.S. only, and every listing comes with a starter supply of the right food.</p>
+      <div class="hero-badges">
+        <span class="badge">🇺🇸 U.S. sourced only</span>
+        <span class="badge">💵 Priced in USD</span>
+        <span class="badge">🌾 Food included in every listing</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="glyph">🐕</div>
+      <div class="glyph">🐈</div>
+      <div class="glyph">🦜</div>
+      <div class="glyph">🐠</div>
+      <div class="glyph">🐹</div>
+      <div class="glyph">🦎</div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap" id="petSections">
+  <p class="loading-msg">Loading catalog…</p>
+</main>
+
+<section class="section" id="food-section">
+  <div class="section-head">
+    <div>
+      <h3>Provisions &amp; feed</h3>
+      <p>Every pet listing already includes a starter bag — here's where to restock once you're home.</p>
+    </div>
+  </div>
+  <div class="grid" id="foodGrid"></div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h5>Happy Paws</h5>
+      <p style="max-width: 40ch;">A U.S.-only marketplace for pets and pet provisions. Every animal is sourced domestically and every price is quoted in U.S. dollars.</p>
+    </div>
+    <div>
+      <h5>Shipping</h5>
+      <ul>
+        <li>Contiguous United States</li>
+        <li>Alaska &amp; Hawaii by request</li>
+        <li>No international shipping</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Customer care</h5>
+      <ul>
+        <li>Mon–Sat, 8am–6pm ET</li>
+        <li>help@happypaws.example</li>
+        <li>1-800-555-0143</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head">
+    <h3 class="slab">Your cart</h3>
+    <button id="drawerClose" aria-label="Close cart">×</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span>Subtotal</span><span id="subtotalAmt">$0</span></div>
+    <button class="checkout-btn" id="checkoutBtn">Check out</button>
+    <p class="ship-note">Ships within the United States only. All prices in USD.</p>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
